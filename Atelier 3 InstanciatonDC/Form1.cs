@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,26 +41,28 @@ namespace Atelier_3_InstanciatonDC
                     for (int i = 0; i <= result; i++)
                     {
                         Button bouton = new Button();
+
+                        // Solution 1 pour couleur damier, un peu plus longue
+                        //if ((i % 2 == 0 && j % 2 == 0) || (i % 2 != 0 && j % 2 != 0)) { bouton.BackColor = Color.Black; }
+                        //else { bouton.BackColor = Color.White; }
+
+                        //Solution 2 pour couleur damier, plus efficiente
+                        if ((i+j) % 2 == 0) { bouton.BackColor = Color.Black; }
+                        else { bouton.BackColor = Color.White; }
+
+                        //Ajout des nouveaux boutons
                         bouton.Text = i.ToString();
                         bouton.Size = new System.Drawing.Size(taille, taille);
-                        //bouton.Location = new Point(bouton.Width * i, y);
                         bouton.Location = new Point(x, y);
                         groupBox1.Controls.Add(bouton);
-                        x += taille;
-                        /*for (int j = 0; j <= result; j++)
-                        {
-                            Button bouton1 = new Button();
-                            bouton1.Text = j.ToString();
-                            bouton1.Size = new System.Drawing.Size((groupBox1.Height / result), (groupBox1.Height / result));
-                            bouton1.Location = new Point(x, bouton1.Height * j);
-                            groupBox1.Controls.Add(bouton1);
-                        }*/
+                        x += taille;                      
                     }
                     y += taille;
                     x = 0;
                 }
+
             }
-           
+
 
 
         }
